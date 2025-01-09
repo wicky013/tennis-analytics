@@ -1,0 +1,94 @@
+1) SELECT competitions.competition_name,categories.category_name
+from competitions
+join categories on competitions.category_id=categories.category_id;
+
+
+2) select categories.category_name,count(competitions.competition_name) as total_competitions
+
+from categories
+join competitions on categories.category_id=competitions.category_id
+
+GROUP by categories.category_name;
+
+
+3)select competition_name,type from competitions WHERE type='doubles';
+
+
+4)SELECT categories.category_name,competitions.competition_name
+
+from categories
+join competitions on categories.category_id=competitions.category_id
+
+where category_name='ITF Men';
+
+5)SELECT category_name,type, 
+COUNT(*) AS competition_count
+FROM competitions 
+JOIN categories  ON competitions.category_id = categories.category_id
+GROUP BY categories.category_name, competitions.type
+ORDER BY categories.category_name, competitions.type;
+
+
+6)SELECT venues.venue_name,complexes.complex_name
+
+from venues 
+join complexes on venues.complex_id=complexes.complex_id;
+
+
+7) SELECT complexes.complex_name,venues.venue_name,COUNT(venues.venue_name) as venue_count
+
+from complexes 
+join venues on complexes.complex_id=venues.complex_id
+
+GROUP BY complexes.complex_name;
+
+8)SELECT venue_name ,country_name from venues WHERE country_name='Chile';
+
+9)SELECT venue_name ,timezone from venues;
+
+
+10)SELECT complexes.complex_name, COUNT(venues.venue_id) AS venue_count
+FROM venues
+JOIN complexes ON venues.complex_id = complexes.complex_id
+GROUP BY complexes.complex_id, complexes.complex_name
+HAVING COUNT(venues.venue_id) > 1;
+
+
+11) SELECT venues.venue_name ,complexes.complex_name
+
+from complexes 
+join venues on complexes.complex_id=venues.complex_id
+
+WHERE complex_name ='Nacional';
+
+12) SELECT competitors.name,competitor_rankings.rank,competitor_rankings.points 
+
+from competitors 
+join competitor_rankings on competitors.competitor_id=competitor_rankings.competitor_id;
+
+
+13)select competitors.name,competitor_rankings.rank
+
+from competitors
+
+join competitor_rankings on competitors.competitor_id=competitor_rankings.competitor_id 
+LIMIT 5;
+
+
+14) select competitors.name,sum(competitor_rankings.points) as total_points
+
+from competitors 
+JOIN competitor_rankings on competitors.competitor_id=competitor_rankings.competitor_id
+WHERE country='Croatia';
+
+
+15)select competitors.country,count(competitors.name) as total_count
+from competitors
+group BY competitors.country;
+
+
+
+
+
+
+
